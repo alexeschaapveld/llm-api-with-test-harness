@@ -15,6 +15,6 @@ class LLMUser(HttpUser):
     @task(1)
     def generate_llm(self):
         """Heavy LLM generation endpoint."""
-        payload = {"prompt": "Write a two sentence story about the jobs of learning VIM."}
+        payload = {"prompt": "Write 10 characters."}
         #Extends timeout since local LLM can be slower
         self.client.post("/generate", json=payload, timeout=60)
