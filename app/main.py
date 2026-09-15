@@ -1,4 +1,5 @@
-from fastapi import FastAPI, HTTPException
+import httpx
+from fastapi import FastAPI, HTTPException, status
 from pydantic import BaseModel, Field
 from app.ollama_client import generate_completion
 
@@ -19,7 +20,7 @@ async def health_check():
             response = await client.get("http://127.0.0.1:11434/api/tags")
             if(response.status_code == 200):
                 return {"status": "healthy", "ollama_status": "connected"}
-    except (httpx.ConnectError, httpx,TimeoutException):
+    except (httpx.ConnectError, httpx.TimeoutException):
         pass
     raise HTTPException(
         status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
