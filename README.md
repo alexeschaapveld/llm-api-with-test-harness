@@ -1,3 +1,46 @@
+# Local LLM API Gateway
+
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.100%2B-009688.svg)](https://fastapi.tiangolo.com/)
+[![Ollama](https://img.shields.io/badge/Ollama-Local-orange.svg)](https://ollama.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+A production-grade, asynchronous API gateway built with **FastAPI** designed to route requests to local LLM inference engines (**Ollama**). This project focuses heavily on system resilience, predictable error handling, and performance benchmarking under load.
+
+---
+
+## 🚀 Key Features
+
+* **Sub-Second Health Monitoring:** A dedicated `/health` endpoint that proactively verifies downstream uptime for both the gateway and the local Ollama engine without executing costly inference tasks.
+* **Resilient Timeout Management:** Enforces strict asynchronous request timeouts using `httpx` (2s for health checks, 30s for generation) to prevent frozen LLM tasks from locking up Uvicorn’s event loop.
+* **Standardized Error Handling:** Replaces generic `500 Internal Server Error` crashes with predictable, structured HTTP status codes (`503 Service Unavailable`, `504 Gateway Timeout`) for clean downstream client handling.
+* **Performance Benchmarked:** Hardware throughput limits, p95 latencies, and system failure points evaluated and documented via **Locust** load testing.
+
+---
+
+## 🛠️ Tech Stack
+
+* **Core Framework:** FastAPI, Uvicorn (ASGI)
+* **HTTP Client:** `httpx` (AsyncClient)
+* **Inference Engine:** Ollama (`smollm2:135m`)
+* **Load Testing:** Locust
+* **Version Control:** Git (Feature-branch workflow)
+
+---
+
+## ⚙️ Getting Started
+
+### Prerequisites
+* Python 3.10+ installed
+* [Ollama](https://ollama.com/) installed and running locally with your target model pulled (e.g., `ollama run smollm2:135m`)
+
+### Installation & Setup
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/YOUR-USERNAME/your-repo-name.git](https://github.com/YOUR-USERNAME/your-repo-name.git)
+   cd your-repo-name
+
 ## Performance & Benchmarks
 
 ### Test Enviroment
