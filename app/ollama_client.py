@@ -2,7 +2,7 @@ import httpx
 
 OLLAMA_URL = "http://localhost:11434/api/generate"
 
-async def generate_completion(prompt: str, model: str = "qwen2.5 coder") -> str:
+async def generate_completion(prompt: str, model: str = "qwen2.5:0.5b") -> str:
     """Sends prompt to local Ollama instance and returns generated response"""
     payload = {
         "model": model,

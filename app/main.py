@@ -25,4 +25,4 @@ async def generate(request: GenerateRequest):
         return GenerateResponse(response=output_text)
     except Exception as e:
         #Security: Avoid exposing stack traces or sensitive information in production. Log the error internally and return a generic message.
-        raise HTTPException(status_code=500, detail="LLM backend error: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"LLM backend error: {str(e)}")
