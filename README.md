@@ -52,3 +52,8 @@ A production-grade, asynchronous API gateway built with **FastAPI** designed to 
 * **Optimal Capacity:** 1-2 concurrent users (~0.9 RPS, p95 latency < 7s, 0% failure)
 * **Soft Limit (Latency Degradation):** 5+ concurrent users (~1.6 RPS, p95 latency spikes to 28s, 0% failure)
 * **Hard Breaking Point:** 8+ concurrent users (Requests fail due to queue timeouts)
+
+### Running Load Tests
+```bash
+locust -f load_tests/locustfile.py --host http://localhost:8000
+```
