@@ -7,7 +7,7 @@ app = FastAPI(title="Local LLM Gateway API");
 
 #Defines the expected JSON structure
 class GenerateRequest(BaseModel):
-    prompt: str = Field(..., min_length=1, description="Prompt text to feed LLM")
+    prompt: str = Field(..., min_length=1, max_length = 500, description="Prompt text to feed LLM")
 
 #Defines the standard outgoing JSON structure
 class GenerateResponse(BaseModel):

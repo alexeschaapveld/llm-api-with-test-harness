@@ -23,3 +23,9 @@ def test_invalid_json_payload():
     )
     
     assert response.status_code == 422
+
+def test_prompt_over_max_length_rejected():
+    """Verify prompts longer than 500 characters are rejected"""
+    payload = {"prompt": "l" * 501}
+    response = client.post("/generate", json=payload)
+    assert response.status_code == 422
