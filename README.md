@@ -28,43 +28,14 @@ A asynchronous API gateway built with **FastAPI** designed to route requests to 
 
 ---
 
-## ⚙️ Getting Started
+## Getting Started (Windows PowerShell
 
-### Prerequisites
-* Python 3.13.x installed
-* [Ollama](https://ollama.com/) installed and running locally with your target model pulled (e.g., `ollama run smollm2:135m`)
+* Ensure **Ollama** is running in background (check with `ollama serve` or `localhost:11434`)
+* Ensure all dependencies are installed
+* Start server (`uvicorn app.main:app --reload --port 8000`)
+* Open new terminal and test with (`Invoke-RestMethod -Uri "http://127.0.0.1:8000/generate" -Method Post -ContentType "application/json" -Body '{"prompt": "message"}' `)
 
-> This project has been validated on Python 3.13. The dependency stack in `uvicorn[standard]` can fail under Python 3.14 on this Windows/MSYS2 environment due to `watchfiles` platform compatibility issues.
-
-### Installation & Setup
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/YOUR-USERNAME/your-repo-name.git
-   cd your-repo-name
-   ```
-
-2. **Create and activate a virtual environment with Python 3.13:**
-   ```bash
-   py -3.13 -m venv .venv313
-   .\.venv313\Scripts\Activate.ps1
-   ```
-
-3. **Install dependencies:**
-   ```bash
-   python -m pip install --upgrade pip
-   python -m pip install -r requirements.txt
-   ```
-
-4. **Run the app:**
-   ```bash
-   uvicorn app.main:app --reload
-   ```
-
-5. **Run tests:**
-   ```bash
-   python -m pytest -q
-   ```
+---
 
 ## Performance & Benchmarks
 
