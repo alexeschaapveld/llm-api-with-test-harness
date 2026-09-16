@@ -1,6 +1,6 @@
 # Local LLM API Gateway
 
-[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.13-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100%2B-009688.svg)](https://fastapi.tiangolo.com/)
 [![Ollama](https://img.shields.io/badge/Ollama-Local-orange.svg)](https://ollama.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -31,15 +31,40 @@ A production-grade, asynchronous API gateway built with **FastAPI** designed to 
 ## ⚙️ Getting Started
 
 ### Prerequisites
-* Python 3.10+ installed
+* Python 3.13.x installed
 * [Ollama](https://ollama.com/) installed and running locally with your target model pulled (e.g., `ollama run smollm2:135m`)
+
+> This project has been validated on Python 3.13. The dependency stack in `uvicorn[standard]` can fail under Python 3.14 on this Windows/MSYS2 environment due to `watchfiles` platform compatibility issues.
 
 ### Installation & Setup
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/YOUR-USERNAME/your-repo-name.git](https://github.com/YOUR-USERNAME/your-repo-name.git)
+   git clone https://github.com/YOUR-USERNAME/your-repo-name.git
    cd your-repo-name
+   ```
+
+2. **Create and activate a virtual environment with Python 3.13:**
+   ```bash
+   py -3.13 -m venv .venv313
+   .\.venv313\Scripts\Activate.ps1
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   python -m pip install --upgrade pip
+   python -m pip install -r requirements.txt
+   ```
+
+4. **Run the app:**
+   ```bash
+   uvicorn app.main:app --reload
+   ```
+
+5. **Run tests:**
+   ```bash
+   python -m pytest -q
+   ```
 
 ## Performance & Benchmarks
 
