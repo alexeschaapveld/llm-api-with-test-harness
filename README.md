@@ -45,8 +45,8 @@ A production-grade, asynchronous API gateway built with **FastAPI** designed to 
 
 ### Test Enviroment
 * **Model:** 'smollm2:135M' (via Ollama)
-* **GPU/VRAM:** AMD Ryzen 5500U with Radeon Graphics
-* **CPU/RAM:** 32GB of DDR4 
+* **CPU:** AMD Ryzen 5500U with Radeon Graphics
+* **RAM:** 32GB of DDR4 
 
 ### Results
 * **Optimal Capacity:** 1-2 concurrent users (~0.9 RPS, p95 latency < 7s, 0% failure)
