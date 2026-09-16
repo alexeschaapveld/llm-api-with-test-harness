@@ -30,9 +30,5 @@ async def health_check():
 @app.post("/generate", response_model=GenerateResponse)
 async def generate(request: GenerateRequest):
     """Wrap Ollama generation logic into an HTTP POST route."""
-    try:
-        output_text = await generate_completion(request.prompt)
-        return GenerateResponse(response=output_text)
-    except Exception as e:
-        #Security: Avoid exposing stack traces or sensitive information in production. Log the error internally and return a generic message.
-        raise HTTPException(status_code=500, detail=f"LLM backend error: {str(e)}")
+    output_text = await generate_completion(request.prompt)
+    return GenerateResponse(response=output_text)
