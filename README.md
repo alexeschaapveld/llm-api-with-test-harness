@@ -5,7 +5,7 @@
 [![Ollama](https://img.shields.io/badge/Ollama-Local-orange.svg)](https://ollama.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A production-grade, asynchronous API gateway built with **FastAPI** designed to route requests to local LLM inference engines (**Ollama**). This project focuses heavily on system resilience, predictable error handling, and performance benchmarking under load. 
+A asynchronous API gateway built with **FastAPI** designed to route requests to local LLM inference engines (**Ollama**). This project focuses heavily on system resilience, predictable error handling, and performance benchmarking under load. 
 
 ---
 
