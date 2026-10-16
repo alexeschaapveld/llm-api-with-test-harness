@@ -5,13 +5,13 @@
 [![Ollama](https://img.shields.io/badge/Ollama-Local-orange.svg)](https://ollama.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A asynchronous API gateway built with **FastAPI** designed to route requests to local LLM inference engines (**Ollama**). This project focuses heavily on system resilience, predictable error handling, and performance benchmarking under load. 
+An asynchronous API gateway built with **FastAPI** designed to route requests to local LLM inference engines (**Ollama**). This project focuses heavily on system resilience, predictable error handling, and performance benchmarking under load. 
 
 ---
 
 ## 🚀 Key Features
 
-* **Sub-Second Health Monitoring:** A dedicated `/health` endpoint that proactively verifies downstream uptime for both the gateway and the local Ollama engine without executing costly inference tasks.
+* **Lightweight Health Monitoring:** A dedicated `/health` endpoint that proactively verifies downstream uptime for both the gateway and the local Ollama engine without executing costly inference tasks.
 * **Resilient Timeout Management:** Enforces strict asynchronous request timeouts using `httpx` (2s for health checks, 30s for generation) to prevent frozen LLM tasks from locking up Uvicorn’s event loop.
 * **Standardized Error Handling:** Replaces generic `500 Internal Server Error` crashes with predictable, structured HTTP status codes (`503 Service Unavailable`, `504 Gateway Timeout`) for clean downstream client handling.
 * **Performance Benchmarked:** Hardware throughput limits, p95 latencies, and system failure points evaluated and documented via **Locust** load testing.
@@ -24,14 +24,15 @@ A asynchronous API gateway built with **FastAPI** designed to route requests to 
 * **HTTP Client:** `httpx` (AsyncClient)
 * **Inference Engine:** Ollama (`smollm2:135m`)
 * **Load Testing:** Locust
-* **Version Control:** Git  (Feature-branch workflow)
+* **Version Control:** Git (Feature-branch workflow)
 
 ---
 
-## Getting Started (Windows PowerShell
+## Getting Started (Windows PowerShell)
 
 * Ensure **Ollama** is running in background (check with `ollama serve` or `localhost:11434`)
-* Ensure all dependencies are installed
+* Install dependencies (`pip install -r requirements.txt`)
+* Pull the model (`ollama pull smollm2:135m`)
 * Start server (`uvicorn app.main:app --reload --port 8000`)
 * Open new terminal and test with (`Invoke-RestMethod -Uri "http://127.0.0.1:8000/generate" -Method Post -ContentType "application/json" -Body '{"prompt": "message"}' `)
 
@@ -39,8 +40,8 @@ A asynchronous API gateway built with **FastAPI** designed to route requests to 
 
 ## Performance & Benchmarks
 
-### Test Enviroment
-* **Model:** 'smollm2:135M' (via Ollama)
+### Test Environment
+* **Model:** `smollm2:135m` (via Ollama)
 * **CPU:** AMD Ryzen 5500U with Radeon Graphics
 * **RAM:** 32GB of DDR4 
 
